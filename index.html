@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Issues Tracker | Login</title>
+    <link rel="shortcut icon" href="/assets/github-logo.png" type="image/x-icon">
+
+     <!-- font integration -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- tailwind+daisyui -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+     <!-- stylesheet -->
+      <link rel="stylesheet" href="style.css">
+
+      <style>
+        *{
+            font-family: "Geist", sans-serif;
+        }
+      </style>
+
+
+
+  </head>
+  <body class="min-h-screen max-w-md bg-white shadow-2xl mx-auto mt-10 mb-10">
+    <div class="bg-white  max-w-md w-full py-2 text-center space-y-1">
+
+    <!-- Logo -->
+    <div class="flex justify-center">
+        <img src="assets/github-logo.png" class="w-20">
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-2xl font-semibold text-[#1F2937]">
+        GitHub Issues Tracker
+    </h2>
+
+    <!-- Subtitle -->
+    <p class="text-[#64748B]">
+        Sign in to manage your issues
+    </p>
+
+</div>
+<div class="form">
+     <div class="items-center mx-auto rounded-2xl">
+      <div class="card-body">
+        <fieldset class="fieldset">
+          <label class="label">Username</label>
+          <input id="name" type="username" class="input w-full" value="admin"  placeholder="Enter Username" />
+          <div><a class="link link-hover text-blue-700">Default: admin</a></div>
+          <label class="label">Password</label>
+          <input id="input-pass" type="password" class="input w-full" placeholder="Enter Password" />
+          <div><a class="link link-hover  text-blue-700">Default: admin123</a></div>
+          <button id="signin-btn" class="btn btn-neutral mt-4 text-white bg-blue-700">Sign In</button>
+        </fieldset>
+      </div>
+    </div>
+</div>
+
+<script src="script/login.js"></script>
+  </body>
+</html>
