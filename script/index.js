@@ -38,7 +38,7 @@ const loadIssues = async () => {
 const loadIssueDetail = async (id) => {
   const detailBox = document.getElementById("detail-contain");
 
-  // spinner inside modal
+  // Spinner inside modal
   detailBox.innerHTML = `
     <div class="flex justify-center py-10">
       <span class="loading loading-spinner loading-lg text-primary"></span>
@@ -61,6 +61,8 @@ const loadIssueDetail = async (id) => {
 const displayIssueDetails = (issue) => {
   const detailBox = document.getElementById("detail-contain");
 
+  const formattedDate = issue.createdAt ? new Date(issue.createdAt).toLocaleDateString("en-GB") : "N/A";
+
   detailBox.innerHTML = `
   <div class="p-6 bg-white rounded-lg shadow-md max-w-xl">
 
@@ -81,7 +83,7 @@ const displayIssueDetails = (issue) => {
 
         <i class="fa-solid fa-circle text-gray-400 text-xs mx-2"></i>
 
-        ${issue.created_at || issue.date || "N/A"}
+        ${formattedDate}
       </p>
 
       <p class="text-gray-600">
@@ -104,7 +106,7 @@ const displayIssueDetails = (issue) => {
 
       <div>
         <p class="text-sm font-medium">Assignee:</p>
-        <h4 class="font-semibold">${issue.author || "Unassigned"}</h4>
+        <h4 class="font-semibold">${issue.assignee || "Unassigned"}</h4>
       </div>
 
       <div>
@@ -133,6 +135,8 @@ const displayIssue = (issues) => {
         : "border-t-4 border-purple-500";
 
     div.className = `shadow-xl rounded-xl p-5 bg-white ${borderColor}`;
+
+    const formattedDate = issue.createdAt ? new Date(issue.createdAt).toLocaleDateString("en-GB") : "N/A";
 
     div.innerHTML = `
       <div class="flex justify-between items-center mb-3">
@@ -171,7 +175,7 @@ const displayIssue = (issues) => {
 
       <div class="grid text-gray-500 text-sm">
         <span>#${issue.id} by ${issue.author || "john_doe"}</span>
-        <span>${issue.created_at || issue.date || "N/A"}</span>
+        <span>${formattedDate}</span>
       </div>
     `;
 
@@ -181,6 +185,8 @@ const displayIssue = (issues) => {
 
     IssueCard.appendChild(div);
   });
+
+  manageSpinner(false);
 };
 
 // ================= UPDATE ISSUE COUNT =================
