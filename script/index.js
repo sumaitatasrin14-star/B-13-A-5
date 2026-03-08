@@ -14,6 +14,79 @@ const loadIssues = () => {
     });
 };
 
+
+const loadIssueDetail = async(id)=>{
+  const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
+  const res= await fetch(url);
+  const details = await res.json();
+  displayIssueDetails(details.data);
+
+}
+
+const displayIssueDetails = (issue) =>{
+     console.log(issue);
+     const detailBox=document.getElementById("detail-contain");
+     detailBox.innerHTML=`
+
+     <div class="p-6 bg-white rounded-lg shadow-md max-w-xl">
+
+    <h2 class="text-2xl font-bold mb-4">${issue.title}</h2>
+
+    <div class="flex flex-col gap-4 mb-6">
+
+      <p class="text-gray-700">
+        <span class="inline-block rounded-full ${
+          issue.status === "open" ? "bg-green-500" : "bg-purple-500"
+        } text-white px-3 py-1 text-sm font-semibold mr-2">
+          ${issue.status}
+        </span>
+
+        <i class="fa-solid fa-circle text-gray-400 text-xs mr-2"></i>
+
+        Opened by <strong>${issue.author || "Unknown"}</strong>
+
+        <i class="fa-solid fa-circle text-gray-400 text-xs mx-2"></i>
+
+        ${issue.date || "N/A"}
+      </p>
+
+      <p class="text-gray-600">
+        ${issue.description}
+      </p>
+
+      <div class="flex gap-3">
+        <span class="border border-red-300 text-red-500 px-4 py-1 rounded-full text-sm font-semibold">
+          BUG
+        </span>
+
+        <span class="border border-yellow-400 text-yellow-500 px-3 py-1 rounded-full text-sm font-semibold">
+          HELP WANTED
+        </span>
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 bg-gray-100 rounded-md p-4 mb-6 text-gray-700">
+
+      <div>
+        <p class="text-sm font-medium">Assignee:</p>
+        <h4 class="font-semibold">${issue.author || "Unassigned"}</h4>
+      </div>
+
+      <div>
+        <p class="text-sm font-medium">Priority:</p>
+        <span class="inline-block bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+          ${issue.priority || "HIGH"}
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+     `;
+     document.getElementById("my_modal_5").showModal();
+}
+
 // Display issues
 const displayIssue = (issues) => {
   IssueCard.innerHTML = "";
@@ -26,7 +99,7 @@ const displayIssue = (issues) => {
     div.className = `shadow-xl rounded-xl p-5 bg-white ${borderColor}`;
 
     div.innerHTML = `
-    <div onclick="my_modal_5.showModal()">
+    <div onclick="loadIssueDetail(${issue.id})">
       <div class="flex justify-between items-center mb-3">
         <div class="w-10 h-10 flex items-center justify-center ${issue.status === "open" ? "bg-green-100" : "bg-purple-100"} rounded-full">
           <i class="fa-solid fa-circle ${issue.status === "open" ? "text-green-500" : "text-purple-500"}"></i>
