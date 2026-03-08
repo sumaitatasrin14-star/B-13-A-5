@@ -83,7 +83,7 @@ const displayIssueDetails = (issue) => {
 
         <i class="fa-solid fa-circle text-gray-400 text-xs mx-2"></i>
 
-        ${formattedDate}
+        ${issue.date || "N/A"}
       </p>
 
       <p class="text-gray-600">
@@ -106,7 +106,7 @@ const displayIssueDetails = (issue) => {
 
       <div>
         <p class="text-sm font-medium">Assignee:</p>
-        <h4 class="font-semibold">${issue.assignee || "Unassigned"}</h4>
+        <h4 class="font-semibold">${issue.author || "Unassigned"}</h4>
       </div>
 
       <div>
@@ -174,7 +174,7 @@ const displayIssue = (issues) => {
       <hr class="mb-3">
 
       <div class="grid text-gray-500 text-sm">
-        <span>#${issue.id} by ${issue.author || "john_doe"}</span>
+        <span>#${issue.id} by ${issue.author }</span>
         <span>${formattedDate}</span>
       </div>
     `;
