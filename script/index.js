@@ -83,7 +83,7 @@ const displayIssueDetails = (issue) => {
 
         <i class="fa-solid fa-circle text-gray-400 text-xs mx-2"></i>
 
-        ${issue.date || "N/A"}
+          ${formattedDate}
       </p>
 
       <p class="text-gray-600">
